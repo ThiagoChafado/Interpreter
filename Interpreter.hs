@@ -54,7 +54,7 @@ step (MyLet x e1 e2)
   | isValue e1 = subst x e1 e2
   | otherwise  = MyLet x (step e1) e2
 
--- Regra de avaliação para listas
+
 step (MyList es) = MyList (evalStep es)
   where evalStep [] = []
         evalStep (h:t) | isValue h = h : evalStep t

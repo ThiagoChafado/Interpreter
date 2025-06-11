@@ -22,6 +22,13 @@ typeof ctx (If e1 e2 e3) =
                       _ -> Nothing
       _ -> Nothing
 
+typeof ctx (Mul e1 e2) = case (typeof ctx e1, typeof ctx e2) of
+                       (Just TNum, Just TNum) -> Just TNum
+                       _                      -> Nothing
+typeof ctx (Sub e1 e2) = case (typeof ctx e1, typeof ctx e2) of
+                       (Just TNum, Just TNum) -> Just TNum
+                       _                      -> Nothing
+
 typeof ctx (Var v) = lookup v ctx
 typeof ctx (Lam x t b) = case typeof ((x, t) : ctx) b of
                       Just t2 -> Just (TFun t t2)

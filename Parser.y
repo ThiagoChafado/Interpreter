@@ -29,6 +29,13 @@ import Lexer
 
 %%
 
+
+
+
+
+
+
+
 -- Regra principal para expressões
 Exp :
     Atom                        { $1 }
